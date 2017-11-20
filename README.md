@@ -1,8 +1,8 @@
-#Bitcoin Price Checker#
+# Bitcoin Price Checker
 
 A Simple Bitcoin Price Checker, built during the **Advanced Web Developer Bootcamp** on Udemy
 
-##Techniques practiced:##
+## Techniques practiced:
 
 * XMLHttpRequest()
 * JSON.parse()
