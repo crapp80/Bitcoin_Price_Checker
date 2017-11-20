@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bitcoin Price Checker</title>
+</head>
+<style>
+  span {
+    color: green;
+  }
+</style>
+<body>
+  <h1>Bitcoin Current Price is: <span id="price"></span></h1>
+  <button id="btn">Refresh Data</button>
+<script>
+  var btn = document.querySelector("#btn");
+  var price = document.querySelector("#price");
+  var currency = "EUR"
+
+  var XMLReq = function() {
+  var XHR = new XMLHttpRequest();
+
+  XHR.onreadystatechange = () => {
+    if(XHR.readyState == 4 && XHR.status == 200) {
+      var currentRate = JSON.parse(XHR.responseText).bpi[currency].rate;
+      price.innerHTML = ` ${currentRate} ${currency}` ;
+    }
+  };
+
+  var url = "https://api.coindesk.com/v1/bpi/currentprice/EUR.json";
+  XHR.open("GET", url);
+  XHR.send();
+  }
+
+  window.addEventListener("load", XMLReq);
+  btn.addEventListener("click", XMLReq);
+</script>  
+</body>
+</html>
